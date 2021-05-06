@@ -6,10 +6,12 @@
   </div>
   <div class="row text-white">
     <div class="col-3 bg-info p-2">
-      Categories: {{categories.length}}
+      <button class="btn btn-block btn-outline-primary w-100" (click)="changeCategory()" >All</button>
+      <button class="btn btn-block btn-outline-primary w-100"
+              *ngFor="let category of categories"
+              (click)="changeCategory(category)" >{{category}}</button>
     </div>
     <div class="col-9 bg-success p-2">
-      Products: {{products.length}}
       <div class="card m-1 bg-dark" *ngFor="let product of products">
         <h4 class="m-1">
           {{product.name}}
