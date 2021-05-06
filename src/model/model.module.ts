@@ -6,6 +6,5 @@ import {StaticDataSource} from './staticDataSource';
   providers: [ProductRepository, StaticDataSource]
 })
 export class ModelModule{
-  
 }
 

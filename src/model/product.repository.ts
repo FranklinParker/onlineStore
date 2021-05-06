@@ -17,9 +17,13 @@ export class ProductRepository {
     });
   }
 
-  getProducts(category: string): ProductModel[] {
-    return this.products.filter((prod) => category === null ||
+  getProducts(category?: string): ProductModel[] {
+    return this.products.filter((prod) => !category  ||
       prod.category === category);
+  }
+
+  getCategories(): (string | undefined)[]{
+    return this.categories;
   }
 
   getProduct(id: number): ProductModel|undefined {
