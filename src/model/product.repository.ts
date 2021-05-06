@@ -12,8 +12,14 @@ export class ProductRepository {
     this.datasource.getProducts().subscribe((data) => {
       this.products = data;
       this.categories = data.map((value) => value.category)
-        .filter((c, index, array) =>
-          array.indexOf(c) === index).sort();
+        .filter((c, index, array) => {
+          // console.log('c', c);
+          // console.log('index', index);
+          // console.log('array', array);
+          //
+
+          return array.indexOf(c) === index;
+        }).sort();
     });
   }
 
