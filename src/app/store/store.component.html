@@ -15,7 +15,7 @@
       <div class="card m-1 bg-dark" *ngFor="let product of products">
         <h4 class="m-1">
           {{product.name}}
-          <span class="badge bg-danger  float-end">
+          <span class="badge rounded-pill bg-danger  float-end">
             {{product.price|currency:'USD':'symbol':'2.2-2'}}</span>
         </h4>
         <div class="card-text bg-dark p-1">{{product.description}}</div>
