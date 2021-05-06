@@ -8,6 +8,7 @@
     <div class="col-3 bg-info p-2">
       <button class="btn btn-block btn-outline-primary w-100" (click)="changeCategory()" >All</button>
       <button class="btn btn-block btn-outline-primary w-100"
+              [class.active]="selectedCategory===category"
               *ngFor="let category of categories"
               (click)="changeCategory(category)" >{{category}}</button>
     </div>
