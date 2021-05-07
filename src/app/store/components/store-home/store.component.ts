@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {ProductRepository} from '../../model/product.repository';
-import {ProductModel} from '../../model/product.model';
-import {CartModel} from '../models/cart.model';
+import {ProductRepository} from '../../../../model/product.repository';
+import {ProductModel} from '../../../../model/product.model';
+import {CartModel} from '../../../models/cart.model';
 
 @Component({
   selector: 'app-store',

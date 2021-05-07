@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree} from '@angular/router';
 import {Observable} from 'rxjs';
-import {StoreComponent} from './store.component';
+import {StoreComponent} from './components/store-home/store.component';
 
 @Injectable({
   providedIn: 'root'

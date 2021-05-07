@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {StoreComponent} from './store.component';
-import {ModelModule} from '../../model/model.module';
-import {CartSummaryComponent} from '../cart-summary/cart-summary.component';
-import {CartDetailsComponent} from '../cart-details/cart-details.component';
 import {RouterModule} from '@angular/router';
-import {CheckoutComponent} from '../checkout/checkout.component';
+import {StoreComponent} from './components/store-home/store.component';
+import {ModelModule} from '../../model/model.module';
+import {CartSummaryComponent} from './components/cart-summary/cart-summary.component';
+import {CartDetailsComponent} from './components/cart-details/cart-details.component';
+import {CheckoutComponent} from './components/checkout/checkout.component';
 
 
 
