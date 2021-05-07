@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ProductRepository} from '../../model/product.repository';
 import {ProductModel} from '../../model/product.model';
+import {CartModel} from '../models/cart.model';
 
 @Component({
   selector: 'app-store',
@@ -11,7 +12,8 @@ export class StoreComponent implements OnInit {
   currentPage = 1;
   productsPerPage = 2;
   selectedCategory: string|undefined = undefined;
-  constructor(private productRepository: ProductRepository) { }
+  constructor(private productRepository: ProductRepository,
+              private cart: CartModel) { }
 
   ngOnInit(): void {
   }
