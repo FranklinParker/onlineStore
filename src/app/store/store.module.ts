@@ -3,21 +3,25 @@ import { CommonModule } from '@angular/common';
 import {StoreComponent} from './store.component';
 import {ModelModule} from '../../model/model.module';
 import {CartSummaryComponent} from '../cart-summary/cart-summary.component';
+import {CartDetailsComponent} from '../cart-details/cart-details.component';
+import {RouterModule} from '@angular/router';
 
 
 
 @NgModule({
   declarations: [
     StoreComponent,
-    CartSummaryComponent
+    CartSummaryComponent,
+    CartDetailsComponent
   ],
   exports: [
     StoreComponent,
-    CartSummaryComponent
+    CartDetailsComponent
   ],
   imports: [
     CommonModule,
-    ModelModule
+    ModelModule,
+    RouterModule
   ]
 })
 export class StoreModule { }
