@@ -19,13 +19,17 @@ export class CartModel{
     const cartLine = this.cartLines
       .find((item) => item.product.id === product.id);
     if ( cartLine){
-      cartLine.quantity = quantity;
+      cartLine.quantity = Number(quantity);
     }
   }
   remove(product: ProductModel): void{
-    const idx = this.cartLines.findIndex(item=> item.product.id === product.id);
+    const idx = this.cartLines.findIndex(item => item.product.id === product.id);
     if (idx !== -1){
       this.cartLines.splice(idx, 1);
     }
+  }
+
+  clear(): void{
+    this.cartLines = [];
   }
 }
