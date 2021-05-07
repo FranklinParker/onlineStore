@@ -55,4 +55,8 @@ export class StoreComponent implements OnInit {
   isNextDisabled(): boolean {
     return this.numberOfProductRecords < (this.productsPerPage * this.currentPage);
   }
+
+  addToCart(product: ProductModel): void{
+    this.cart.addToCart(product, 1);
+  }
 }

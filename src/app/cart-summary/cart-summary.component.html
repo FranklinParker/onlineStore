@@ -1,1 +1,18 @@
-<p>cart-summary works!</p>
+<div class="float-end">
+  <small>
+    Your Cart:
+    <span *ngIf="cart.TotalItems>0;else empty">
+      {{cart.TotalItems}} Item(s).
+      {{cart.TotalAmount|currency:'USD': '2.2-2'}}
+    </span>
+    <ng-template #empty>
+       <span>
+        (empty)
+      </span>
+    </ng-template>
+
+  </small>
+  <button class="btn btn-sm bg-dark text-white" [disabled]="cart.TotalItems===0">
+    <i class="fa fa-shopping-cart"></i>
+  </button>
+</div>
