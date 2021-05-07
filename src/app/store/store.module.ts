@@ -5,6 +5,7 @@ import {ModelModule} from '../../model/model.module';
 import {CartSummaryComponent} from '../cart-summary/cart-summary.component';
 import {CartDetailsComponent} from '../cart-details/cart-details.component';
 import {RouterModule} from '@angular/router';
+import {CheckoutComponent} from '../checkout/checkout.component';
 
 
 
@@ -12,11 +13,13 @@ import {RouterModule} from '@angular/router';
   declarations: [
     StoreComponent,
     CartSummaryComponent,
-    CartDetailsComponent
+    CartDetailsComponent,
+    CheckoutComponent
   ],
   exports: [
     StoreComponent,
-    CartDetailsComponent
+    CartDetailsComponent,
+    CheckoutComponent
   ],
   imports: [
     CommonModule,
