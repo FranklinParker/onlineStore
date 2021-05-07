@@ -23,4 +23,30 @@
       </div>
     </div>
   </div>
+  <div class="row float-start">
+    <div class="form-control">
+      <label for="pageSize">Page size:</label>
+      <select id="pageSize"
+              [value]="productsPerPage"
+              (change)="changePageSize($event)">
+        <option value="2">2</option>
+        <option value="4">4</option>
+      </select>
+    </div>
+
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-2">
+    </div>
+    <div class="col-8 justify-content-around">
+      <button class="btn btn-primary"  [disabled]="currentPage===1"
+              (click)="changePage(currentPage-1)"><<</button>
+      <button class="btn btn-primary"  [disabled]="isNextDisabled()"
+              (click)="changePage(currentPage+1)">>></button>
+    </div>
+   <div class="col-2"></div>
+  </div>
+  <div class="row justify-content-center">
+    <p>{{this.pageNumbers|json}}</p>
+  </div>
 </div>

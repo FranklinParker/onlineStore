@@ -17,7 +17,6 @@ export class ProductRepository {
           // console.log('index', index);
           // console.log('array', array);
           //
-
           return array.indexOf(c) === index;
         }).sort();
     });

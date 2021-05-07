@@ -8,6 +8,8 @@ import {ProductModel} from '../../model/product.model';
   styleUrls: ['./store.component.scss']
 })
 export class StoreComponent implements OnInit {
+  currentPage = 1;
+  productsPerPage = 2;
   selectedCategory: string|undefined = undefined;
   constructor(private productRepository: ProductRepository) { }
 
@@ -15,7 +17,9 @@ export class StoreComponent implements OnInit {
   }
 
   get products(): ProductModel[]{
-    return this.productRepository.getProducts(this.selectedCategory);
+    const selectedIndex = (this.currentPage - 1) * this.productsPerPage;
+    return this.productRepository.getProducts(this.selectedCategory)
+      .slice(selectedIndex, selectedIndex + this.productsPerPage);
   }
 
   get categories(): string[]{
@@ -24,5 +28,29 @@ export class StoreComponent implements OnInit {
 
   changeCategory(category?: string): void {
     this.selectedCategory = category;
+  }
+
+  changePage(newPage: number): void{
+    this.currentPage = newPage;
+  }
+
+
+  changePageSize(event: any): void{
+    this.productsPerPage = event.target.value;
+    this.changeCategory();
+  }
+
+  get pageNumbers(): number[]{
+    return Array(Math.ceil(this.numberOfProductRecords / this.productsPerPage))
+      .fill(0)
+      .map((val, index) => index + 1 );
+  }
+
+  get numberOfProductRecords(): number{
+    return this.productRepository.getProducts(this.selectedCategory).length;
+  }
+
+  isNextDisabled(): boolean {
+    return this.numberOfProductRecords < (this.productsPerPage * this.currentPage);
   }
 }
