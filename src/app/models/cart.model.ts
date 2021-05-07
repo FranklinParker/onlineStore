@@ -5,6 +5,8 @@ import {ProductModel} from '../../model/product.model';
 @Injectable()
 export class CartModel{
   private cartLines: CartLine[] = [];
+  private itemCount = 0;
+  private totalItemPrice = 0;
   addToCart(product: ProductModel, quantity: number = 1 ): void {
     const cartLine =  this.cartLines
       .find((item) => item.product.id === product.id);
@@ -13,6 +15,7 @@ export class CartModel{
     } else {
       this.cartLines.push(new CartLine(product, quantity));
     }
+    this.reCalc();
   }
 
   updateQuantity(product: ProductModel, quantity: number): void {
@@ -21,6 +24,7 @@ export class CartModel{
     if ( cartLine){
       cartLine.quantity = Number(quantity);
     }
+    this.reCalc();
   }
   remove(product: ProductModel): void{
     const idx = this.cartLines.findIndex(item => item.product.id === product.id);
@@ -31,5 +35,24 @@ export class CartModel{
 
   clear(): void{
     this.cartLines = [];
+    this.itemCount = 0;
+    this.totalItemPrice = 0;
+  }
+
+  private reCalc(): void{
+    this.itemCount = 0;
+    this.totalItemPrice = 0;
+    this.cartLines.forEach((line) => {
+      this.itemCount += line.quantity;
+      this.totalItemPrice += line.lineTotal;
+    });
+  }
+
+  get TotalItems(): number{
+    return this.itemCount;
+  }
+
+  get TotalAmount(): number {
+    return this.totalItemPrice;
   }
 }
