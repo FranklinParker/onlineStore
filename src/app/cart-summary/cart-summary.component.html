@@ -3,7 +3,7 @@
     Your Cart:
     <span *ngIf="cart.TotalItems>0;else empty">
       {{cart.TotalItems}} Item(s).
-      {{cart.TotalAmount|currency:'USD': '2.2-2'}}
+      {{cart.TotalAmount|currency:'USD': 'symbol':'2.2-2'}}
     </span>
     <ng-template #empty>
        <span>

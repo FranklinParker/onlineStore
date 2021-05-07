@@ -20,7 +20,10 @@
           <span class="badge rounded-pill bg-danger  float-end">
             {{product.price|currency:'USD':'symbol':'2.2-2'}}</span>
         </h4>
-        <div class="card-text bg-dark p-1">{{product.description}}</div>
+        <div class="card-text bg-dark p-1">{{product.description}}
+          <button class="btn btn-success btn-sm float-end"
+                (click)="addToCart(product)">Add to Cart</button>
+        </div>
       </div>
     </div>
   </div>
