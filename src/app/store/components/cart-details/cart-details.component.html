@@ -17,32 +17,45 @@
           <th><i class="fas fa-trash"></i></th>
         </tr>
         </thead>
-        <tbody>
-        <tr *ngFor="let cartItem of cartModel.cartItems">
-          <td><input class="form-control-sm" type="number"
-                     (change)="quantityChange($event)"
-                     [(ngModel)]="cartItem.quantity" style="width: 4em">
-          </td>
-          <td>{{cartItem.product.name}}</td>
-          <td class="text-end">{{cartItem.product.price|currency:'USD':'symbol':'2.2-2'}}</td>
-          <td class="text-end">{{cartItem.lineTotal|currency:'USD':'symbol':'2.2-2'}}</td>
-          <td>
-            <button class="btn btn-sm btn-danger"
-                    (click)="cartModel.remove(cartItem.product)">Remove
-            </button>
-          </td>
-        </tr>
-        </tbody>
-        <tfoot>
-        <tr>
-          <td colspan="3" class="text-center">
-            Total:
-          </td>
-          <td class="text-end">
-          {{cartModel.TotalAmount|currency:'USD':'symbol':'2.2-2'}}</td>
+        <ng-container *ngIf="cartModel.cartItems.length>0; else noProducts">
+          <tbody>
+          <tr *ngFor="let cartItem of cartModel.cartItems">
+            <td><input class="form-control-sm" type="number"
+                       (change)="quantityChange($event)"
+                       [(ngModel)]="cartItem.quantity" style="width: 4em">
+            </td>
+            <td>{{cartItem.product.name}}</td>
+            <td class="text-end">{{cartItem.product.price|currency:'USD':'symbol':'2.2-2'}}</td>
+            <td class="text-end">{{cartItem.lineTotal|currency:'USD':'symbol':'2.2-2'}}</td>
+            <td>
+              <button class="btn btn-sm btn-danger"
+                      (click)="cartModel.remove(cartItem.product)">Remove
+              </button>
+            </td>
+          </tr>
+          </tbody>
+          <tfoot>
+          <tr>
+            <td colspan="3" class="text-center">
+              Total:
+            </td>
+            <td class="text-end">
+              {{cartModel.TotalAmount|currency:'USD':'symbol':'2.2-2'}}</td>
 
-        </tr>
-        </tfoot>
+          </tr>
+          </tfoot>
+        </ng-container>
+        <ng-template #noProducts>
+          <tbody>
+          <tr>
+            <td colspan="5" class="text-center">
+              <h2>Cart Empty</h2>
+            </td>
+
+          </tr>
+          </tbody>
+
+        </ng-template>
       </table>
 
     </div>
