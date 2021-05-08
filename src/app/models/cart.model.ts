@@ -31,6 +31,7 @@ export class CartModel{
     if (idx !== -1){
       this.cartLines.splice(idx, 1);
     }
+    this.reCalc();
   }
 
   clear(): void{
