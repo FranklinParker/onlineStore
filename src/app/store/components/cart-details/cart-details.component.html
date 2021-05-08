@@ -14,6 +14,7 @@
           <th>Product</th>
           <th class="text-end">Price</th>
           <th class="text-end">Sub Total</th>
+          <th><i class="fas fa-trash"></i></th>
         </tr>
         </thead>
         <tbody>
@@ -25,9 +26,12 @@
           <td>{{cartItem.product.name}}</td>
           <td class="text-end">{{cartItem.product.price|currency:'USD':'symbol':'2.2-2'}}</td>
           <td class="text-end">{{cartItem.lineTotal|currency:'USD':'symbol':'2.2-2'}}</td>
-
+          <td>
+            <button class="btn btn-sm btn-danger"
+                    (click)="cartModel.remove(cartItem.product)">Remove
+            </button>
+          </td>
         </tr>
-
         </tbody>
       </table>
 
