@@ -2,18 +2,7 @@
   <div class="col bg-dark text-white p-2">
     <a class="navbar-brand">Online Store</a>
   </div>
-  <div class="row">
-    <div class="col">
-      <button class="btn btn-primary m-1" routerLink="/">
-        Continue Shopping
-      </button>
-      <button class="btn btn-secondary m-1"
-              [disabled]="cartModel.cartItems.length===0"
-              routerLink="/checkout">
-        Checkout
-      </button>
-    </div>
-  </div>
+
   <div class="row">
     <div class="col mt-2">
       <h2 class="text-center">
@@ -70,6 +59,18 @@
         </ng-template>
       </table>
 
+    </div>
+  </div>
+  <div class="row">
+    <div class="col text-center">
+      <button class="btn btn-primary m-1" routerLink="/">
+        Continue Shopping
+      </button>
+      <button class="btn btn-secondary m-1"
+              [disabled]="cartModel.cartItems.length===0"
+              routerLink="/checkout">
+        Checkout
+      </button>
     </div>
   </div>
 </div>
