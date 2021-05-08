@@ -7,7 +7,7 @@
       <h2 class="text-center">
         Your Cart
       </h2>
-      <table class="table-striped">
+      <table class="table table-bordered table-striped">
         <thead>
          <tr>
            <th>Quantity</th>
@@ -18,10 +18,13 @@
         </thead>
         <tbody>
           <tr *ngFor="let cartItem of cartModel.cartItems">
-            <td>{{cartItem.quantity}}</td>
+            <td><input class="form-control-sm" type="number"
+
+              [(ngModel)]="cartItem.quantity" style="width: 4em">
+            </td>
             <td>{{cartItem.product.name}}</td>
-            <td>{{cartItem.product.price|currency:'USD':'symbol':'2.2-2'}}</td>
-            <td>{{cartItem.lineTotal|currency:'USD':'symbol':'2.2-2'}}</td>
+            <td class="text-end">{{cartItem.product.price|currency:'USD':'symbol':'2.2-2'}}</td>
+            <td class="text-end">{{cartItem.lineTotal|currency:'USD':'symbol':'2.2-2'}}</td>
 
           </tr>
 
