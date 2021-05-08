@@ -13,4 +13,10 @@ export class CartDetailsComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  quantityChange(event: any): void{
+    if (event.target.value < 1){
+      event.target.value = 1;
+    }
+  }
+
 }

@@ -9,24 +9,24 @@
       </h2>
       <table class="table table-bordered table-striped">
         <thead>
-         <tr>
-           <th>Quantity</th>
-           <th>Product</th>
-           <th class="text-end">Price</th>
-           <th class="text-end">Sub Total</th>
-         </tr>
+        <tr>
+          <th>Quantity</th>
+          <th>Product</th>
+          <th class="text-end">Price</th>
+          <th class="text-end">Sub Total</th>
+        </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let cartItem of cartModel.cartItems">
-            <td><input class="form-control-sm" type="number"
+        <tr *ngFor="let cartItem of cartModel.cartItems">
+          <td><input class="form-control-sm" type="number"
+                     (change)="quantityChange($event)"
+                     [(ngModel)]="cartItem.quantity" style="width: 4em">
+          </td>
+          <td>{{cartItem.product.name}}</td>
+          <td class="text-end">{{cartItem.product.price|currency:'USD':'symbol':'2.2-2'}}</td>
+          <td class="text-end">{{cartItem.lineTotal|currency:'USD':'symbol':'2.2-2'}}</td>
 
-              [(ngModel)]="cartItem.quantity" style="width: 4em">
-            </td>
-            <td>{{cartItem.product.name}}</td>
-            <td class="text-end">{{cartItem.product.price|currency:'USD':'symbol':'2.2-2'}}</td>
-            <td class="text-end">{{cartItem.lineTotal|currency:'USD':'symbol':'2.2-2'}}</td>
-
-          </tr>
+        </tr>
 
         </tbody>
       </table>
