@@ -55,4 +55,8 @@ export class CartModel{
   get TotalAmount(): number {
     return this.totalItemPrice;
   }
+
+  get cartItems(): CartLine[]{
+    return this.cartLines;
+  }
 }

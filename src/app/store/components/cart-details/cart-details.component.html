@@ -2,4 +2,32 @@
   <div class="col bg-dark text-white p-2">
     <a class="navbar-brand">Online Store</a>
   </div>
+  <div class="row">
+    <div class="col mt-2">
+      <h2 class="text-center">
+        Your Cart
+      </h2>
+      <table class="table-striped">
+        <thead>
+         <tr>
+           <th>Quantity</th>
+           <th>Product</th>
+           <th class="text-end">Price</th>
+           <th class="text-end">Sub Total</th>
+         </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let cartItem of cartModel.cartItems">
+            <td>{{cartItem.quantity}}</td>
+            <td>{{cartItem.product.name}}</td>
+            <td>{{cartItem.product.price|currency:'USD':'symbol':'2.2-2'}}</td>
+            <td>{{cartItem.lineTotal|currency:'USD':'symbol':'2.2-2'}}</td>
+
+          </tr>
+
+        </tbody>
+      </table>
+
+    </div>
+  </div>
 </div>
