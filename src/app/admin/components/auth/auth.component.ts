@@ -7,13 +7,14 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
   styleUrls: ['./auth.component.scss']
 })
 export class AuthComponent implements OnInit {
-  form: FormGroup | undefined;
+  form = new FormGroup({});
   errorMessage: string | undefined;
 
   constructor(private fb: FormBuilder) {
   }
 
   ngOnInit(): void {
+
     this.form = this.fb.group({
       username: ['', Validators.compose([
         Validators.required])],
