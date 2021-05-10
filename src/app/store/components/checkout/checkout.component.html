@@ -10,5 +10,23 @@
   <h2>Thanks For Placing your order!!!</h2>
   <p>We will ship as soon as possible</p>
   <button class="btn btn-primary"
-          routerLink="/"><i class="fa fa-home"></i> Continue Shopping</button>
+          routerLink="/"><i class="fa fa-home"></i> Continue Shopping
+  </button>
 </div>
+
+<form *ngIf="!orderSent" #form=ngForm
+      class="m-2"
+      ngSubmit="save(form)">
+  <div class="form-group">
+    <label>Name</label>
+    <input class="form-control" #name="ngModel"
+           [(ngModel)]="order.name"
+           required
+           name="name">
+    <span *ngIf="submitted && name.invalid" class="text-danger">
+    Please enter first name
+  </span>
+  </div>
+
+
+</form>

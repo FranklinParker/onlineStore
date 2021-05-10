@@ -21,8 +21,9 @@ export class CheckoutComponent implements OnInit {
 
 
   save(form: NgForm): any {
+    this.submitted = true;
+
     if(form.valid){
-      this.submitted = true;
       this.orderRepository.saveOrder(this.order)
         .subscribe(() => {
           this.order.clear();
