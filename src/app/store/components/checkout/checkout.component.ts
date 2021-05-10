@@ -22,14 +22,12 @@ export class CheckoutComponent implements OnInit {
 
   save(form: NgForm): any {
     this.submitted = true;
-
     if (form.valid){
       this.orderRepository.saveOrder(this.order)
-        .subscribe(() => {
+        .subscribe((res) => {
           this.order.clear();
           this.submitted = false;
           this.orderSent = true;
-          alert('saved');
           },
           err => alert('Error saving order: ' + err.message)
         );

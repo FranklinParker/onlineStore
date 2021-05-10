@@ -16,7 +16,7 @@
 
 <form *ngIf="!orderSent" #form=ngForm
       class="m-2"
-      ngSubmit="save(form)">
+       (ngSubmit)="save(form)">
   <div class="form-group">
     <label>Name</label>
     <input class="form-control" #name="ngModel"
