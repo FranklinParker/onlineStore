@@ -23,4 +23,7 @@ export class AuthComponent implements OnInit {
     });
   }
 
+  login(): void {
+    console.log('form', this.form.getRawValue());
+  }
 }
