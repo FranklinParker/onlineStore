@@ -24,9 +24,64 @@
            required
            name="name">
     <span *ngIf="submitted && name.invalid" class="text-danger">
-    Please enter first name
-  </span>
+      Please enter first name
+    </span>
   </div>
-
+  <div class="form-group">
+    <label>Address</label>
+    <input class="form-control" #address="ngModel"
+           [(ngModel)]="order.address"
+           required
+           name="address">
+    <span *ngIf="submitted && address.invalid" class="text-danger">
+      Please enter address
+    </span>
+  </div>
+  <div class="form-group">
+    <label>City</label>
+    <input class="form-control" #city="ngModel"
+           [(ngModel)]="order.city"
+           required
+           name="city">
+    <span *ngIf="submitted && city.invalid" class="text-danger">
+      Please enter city
+    </span>
+  </div>
+  <div class="form-group">
+    <label>State</label>
+    <input class="form-control" #state="ngModel"
+           [(ngModel)]="order.state"
+           required
+           name="state">
+    <span *ngIf="submitted && state.invalid" class="text-danger">
+      Please enter state
+    </span>
+  </div>
+  <div class="form-group">
+    <label>Zip</label>
+    <input class="form-control" #zip="ngModel"
+           [(ngModel)]="order.zip"
+           required
+           name="zip">
+    <span *ngIf="submitted && zip.invalid" class="text-danger">
+      Please enter Zip
+    </span>
+  </div>
+  <div class="form-group">
+    <label>Country</label>
+    <input class="form-control" #country="ngModel"
+           [(ngModel)]="order.country"
+           required
+           name="country">
+    <span *ngIf="submitted && country.invalid" class="text-danger">
+      Please enter Country
+    </span>
+  </div>
+  <div class="text-center">
+    <button class="btn btn-secondary m-1"
+            routerLink="/cart"
+            type="button">Return to cart</button>
+    <button class="btn btn-primary m-1" type="submit"> Complete Order</button>
+  </div>
 
 </form>
