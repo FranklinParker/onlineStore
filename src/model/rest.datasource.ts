@@ -27,8 +27,27 @@ export class RestDatasource {
     return this.httpClient.post<OrderModel>(this.baseUrl + 'orders', order);
   }
 
+  updateOrder(order: OrderModel): Observable<OrderModel> {
+    return this.httpClient.put<OrderModel>(`${this.baseUrl}orders/${order.id}`,
+      order, this.getOptions());
+  }
+
+  delete(id: number): Observable<any> {
+    return this.httpClient.delete<any>(`${this.baseUrl}orders/${id}`, this.getOptions());
+  }
+
+
+  getOrders(): Observable<OrderModel[]>{
+    return this.httpClient.get<OrderModel[]>(this.baseUrl + 'orders', this.getOptions());
+  }
+
   saveProduct(product: ProductModel): Observable<ProductModel> {
     return this.httpClient.post<ProductModel>(this.baseUrl + 'products',
+      product, this.getOptions());
+  }
+
+  updateProduct(product: ProductModel): Observable<ProductModel> {
+    return this.httpClient.put<ProductModel>(`${this.baseUrl}products/${product.id}`,
       product, this.getOptions());
   }
 
@@ -52,7 +71,7 @@ export class RestDatasource {
   private getOptions(): {  }{
     return {
       headers: new HttpHeaders({
-        Authorization: `Bearer ${this.authToken}`
+        Authorization: `Bearer<${this.authToken}>`
       })
     };
   }
