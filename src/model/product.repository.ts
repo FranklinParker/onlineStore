@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
 import {ProductModel} from './product.model';
-import {StaticDataSource} from './staticDataSource';
 import {RestDatasource} from './rest.datasource';
 
 @Injectable()
