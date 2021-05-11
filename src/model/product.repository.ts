@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {ProductModel} from './product.model';
 import {RestDatasource} from './rest.datasource';
+import {Observable} from 'rxjs';
 
 @Injectable()
 
@@ -33,5 +34,20 @@ export class ProductRepository {
 
   getProduct(id: number): ProductModel|undefined {
     return this.products.find((prod) => prod.id === id);
+  }
+  saveProduct(product: ProductModel): any{
+    if (product.id && product.id !== 0){
+     this.datasource.updateProduct(product)
+       .subscribe((p) => this.products.push(p));
+    } else {
+      this.datasource.saveProduct(product)
+        .subscribe(p =>
+          this.products.splice(this.products.findIndex(pi => pi.id === product.id), 1, p));
+    }
+  }
+
+  deleteProduct(id: number): void{
+    this.datasource.deleteProduct(id).subscribe(() =>
+      this.products.splice(this.products.findIndex(pi => pi.id === id), 1 ));
   }
 }

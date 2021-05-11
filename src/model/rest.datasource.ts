@@ -32,7 +32,7 @@ export class RestDatasource {
       order, this.getOptions());
   }
 
-  delete(id: number): Observable<any> {
+  deleteOrder(id: number): Observable<any> {
     return this.httpClient.delete<any>(`${this.baseUrl}orders/${id}`, this.getOptions());
   }
 
