@@ -6,6 +6,7 @@ import {OrderModel} from '../app/models/Order.model';
 import {OrderRepository} from './order.repository';
 import {HttpClientModule} from '@angular/common/http';
 import {RestDatasource} from './rest.datasource';
+import {AuthService} from './auth.service';
 
 @NgModule({
   imports: [
@@ -18,6 +19,7 @@ import {RestDatasource} from './rest.datasource';
     OrderModel,
     OrderRepository,
     RestDatasource,
+    AuthService
   ]
 })
 export class ModelModule {

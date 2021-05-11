@@ -3,7 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {ProductModel} from './product.model';
 import {OrderModel} from '../app/models/Order.model';
-import {tap} from 'rxjs/operators';
+import {map, tap} from 'rxjs/operators';
 
 
 const PORT = 3500;
@@ -12,7 +12,7 @@ const PROTOCAL = 'http';
 @Injectable()
 
 export class RestDatasource {
-  authToken = '';
+  authToken: string| undefined;
   baseUrl = '';
 
   constructor(private httpClient: HttpClient) {
@@ -27,13 +27,16 @@ export class RestDatasource {
     return this.httpClient.post<OrderModel>(this.baseUrl + 'orders', order);
   }
 
-  authenticate(user: string, password: string): Observable<any> {
+  authenticate(user: string, password: string): Observable<boolean> {
     return this.httpClient.post<any>(this.baseUrl + 'login', {
       name: user,
       password
     })
       .pipe(
-        tap( resp => this.authToken = resp.success ? resp.token : null)
+        map( resp => {
+          this.authToken = resp.success ? resp.token : undefined;
+          return resp.success;
+        })
       );
   }
 }
