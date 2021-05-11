@@ -3,7 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {ProductModel} from './product.model';
 import {OrderModel} from '../app/models/Order.model';
-import {map, tap} from 'rxjs/operators';
+import {catchError, map } from 'rxjs/operators';
 
 
 const PORT = 3500;
@@ -36,7 +36,8 @@ export class RestDatasource {
         map( resp => {
           this.authToken = resp.success ? resp.token : undefined;
           return resp.success;
-        })
+        }),
+
       );
   }
 }

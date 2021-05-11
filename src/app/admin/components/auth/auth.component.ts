@@ -38,7 +38,9 @@ export class AuthComponent implements OnInit {
           } else{
             this.errorMessage = 'Authentication Failed';
           }
-        });
+        },
+          err =>  this.errorMessage = 'Authentication Failed: ' + err.message
+        );
     } else {
       this.errorMessage = 'Please enter Credentials';
 
