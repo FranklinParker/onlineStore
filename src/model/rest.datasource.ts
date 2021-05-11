@@ -6,8 +6,8 @@ import {OrderModel} from '../app/models/Order.model';
 import {catchError, map } from 'rxjs/operators';
 
 
-const PORT = 3500;
-const PROTOCAL = 'http';
+const PORT = 4210;
+const PROTOCOL = 'http';
 
 @Injectable()
 
@@ -16,10 +16,10 @@ export class RestDatasource {
   baseUrl = '';
 
   constructor(private httpClient: HttpClient) {
-    this.baseUrl = `${PROTOCAL}://${location.hostname}:${PORT}/`;
+    this.baseUrl = `${PROTOCOL}://${location.hostname}:${PORT}/`;
   }
 
-  getProduct(): Observable<ProductModel[]> {
+  getProducts(): Observable<ProductModel[]> {
     return this.httpClient.get<ProductModel[]>(this.baseUrl + 'products');
   }
 
