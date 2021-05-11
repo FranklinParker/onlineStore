@@ -27,6 +27,10 @@ export class RestDatasource {
     return this.httpClient.post<OrderModel>(this.baseUrl + 'orders', order);
   }
 
+  saveProduct(product: ProductModel): Observable<OrderModel> {
+    return this.httpClient.post<OrderModel>(this.baseUrl + 'products', product);
+  }
+
   authenticate(username: string, password: string): Observable<boolean> {
     return this.httpClient.post<any>(this.baseUrl + 'login', {
       username,
