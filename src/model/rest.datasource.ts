@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpEvent, HttpParamsOptions} from '@angular/common/http';
+import {HttpClient, HttpEvent, HttpHeaders, HttpParamsOptions} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {ProductModel} from './product.model';
 import {OrderModel} from '../app/models/Order.model';
@@ -50,6 +50,10 @@ export class RestDatasource {
   }
 
   private getOptions(): {  }{
-    return { headers: {}};
+    return {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${this.authToken}`
+      })
+    };
   }
 }
