@@ -6,6 +6,7 @@ import { AuthComponent } from './components/auth/auth.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AdminComponent } from './components/admin/admin.component';
 import {ModelModule} from '../../model/model.module';
+import {AuthGuard} from './guard/auth.guard';
 
 
 @NgModule({
@@ -19,6 +20,9 @@ import {ModelModule} from '../../model/model.module';
     FormsModule,
     ReactiveFormsModule,
     ModelModule
+  ],
+  providers: [
+    AuthGuard
   ]
 })
 export class AdminModule { }
