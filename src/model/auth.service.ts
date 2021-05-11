@@ -12,7 +12,6 @@ export class AuthService{
     return this.restDataSource.authenticate(username, password);
   }
   getAuthenticated(): boolean{
-    console.log('token:' + this.restDataSource.authToken);
     return this.restDataSource.authToken !== undefined;
   }
   clear(): void{

@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpEvent, HttpParamsOptions} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {ProductModel} from './product.model';
 import {OrderModel} from '../app/models/Order.model';
@@ -27,10 +27,14 @@ export class RestDatasource {
     return this.httpClient.post<OrderModel>(this.baseUrl + 'orders', order);
   }
 
-  saveProduct(product: ProductModel): Observable<OrderModel> {
-    return this.httpClient.post<OrderModel>(this.baseUrl + 'products', product);
+  saveProduct(product: ProductModel): Observable<ProductModel> {
+    return this.httpClient.post<ProductModel>(this.baseUrl + 'products',
+      product, this.getOptions());
   }
 
+  deleteProduct(id: number): Observable<any> {
+    return this.httpClient.delete<ProductModel>(`${this.baseUrl}products/${id}`, this.getOptions());
+  }
   authenticate(username: string, password: string): Observable<boolean> {
     return this.httpClient.post<any>(this.baseUrl + 'login', {
       username,
@@ -38,12 +42,14 @@ export class RestDatasource {
     })
       .pipe(
         map( resp => {
-          console.log('resp', resp);
-          this.authToken = resp.token;
-          console.log('token:' + this.authToken);
+          this.authToken = resp.success ? resp.token : undefined;
           return resp.success;
         }),
 
       );
+  }
+
+  private getOptions(): {  }{
+    return { headers: {}};
   }
 }
