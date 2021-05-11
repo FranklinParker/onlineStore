@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {AuthService} from '../../../../model/auth.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-auth',
@@ -10,7 +12,9 @@ export class AuthComponent implements OnInit {
   form = new FormGroup({});
   errorMessage: string | undefined;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder,
+              private router: Router,
+              private authService: AuthService) {
   }
 
   ngOnInit(): void {
@@ -25,5 +29,20 @@ export class AuthComponent implements OnInit {
 
   login(): void {
     console.log('form', this.form.getRawValue());
+    if (this.form.valid) {
+      this.authService.authenticate(this.form.get('username')?.value,
+        this.form.get('password')?.value)
+        .subscribe((value) => {
+          if (value){
+            this.router.navigate(['admin/home']);
+          } else{
+            this.errorMessage = 'Authentication Failed';
+          }
+        });
+    } else {
+      this.errorMessage = 'Please enter Credentials';
+
+    }
+
   }
 }
