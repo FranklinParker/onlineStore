@@ -27,13 +27,14 @@ export class RestDatasource {
     return this.httpClient.post<OrderModel>(this.baseUrl + 'orders', order);
   }
 
-  authenticate(user: string, password: string): Observable<boolean> {
+  authenticate(username: string, password: string): Observable<boolean> {
     return this.httpClient.post<any>(this.baseUrl + 'login', {
-      name: user,
+      username,
       password
     })
       .pipe(
         map( resp => {
+          console.log('resp', resp);
           this.authToken = resp.success ? resp.token : undefined;
           return resp.success;
         }),
