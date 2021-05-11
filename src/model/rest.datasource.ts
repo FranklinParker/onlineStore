@@ -35,7 +35,8 @@ export class RestDatasource {
       .pipe(
         map( resp => {
           console.log('resp', resp);
-          this.authToken = resp.success ? resp.token : undefined;
+          this.authToken = resp.token;
+          console.log('token:' + this.authToken);
           return resp.success;
         }),
 

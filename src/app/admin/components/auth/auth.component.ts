@@ -34,7 +34,7 @@ export class AuthComponent implements OnInit {
         this.form.get('password')?.value)
         .subscribe((value) => {
           if (value){
-            this.router.navigate(['admin/home']);
+            this.router.navigate([ 'admin']);
           } else{
             this.errorMessage = 'Authentication Failed';
           }

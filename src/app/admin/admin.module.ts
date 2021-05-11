@@ -21,5 +21,6 @@ import {AuthGuard} from './guard/auth.guard';
     ReactiveFormsModule,
     ModelModule
   ],
+  providers: [ AuthGuard]
 })
 export class AdminModule { }

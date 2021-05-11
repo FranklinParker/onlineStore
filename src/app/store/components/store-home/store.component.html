@@ -7,11 +7,14 @@
   </div>
   <div class="row text-white">
     <div class="col-3 bg-info p-2">
-      <button class="btn btn-block btn-outline-primary w-100" (click)="changeCategory()">All</button>
+      <button class="btn btn-block btn-outline-primary w-100"
+              (click)="changeCategory()">All
+      </button>
       <button class="btn btn-block btn-outline-primary w-100"
               [class.active]="selectedCategory===category"
               *ngFor="let category of categories"
-              (click)="changeCategory(category)">{{category}}</button>
+              (click)="changeCategory(category)">{{category}}
+      </button>
       <button class="btn btn-block btn-outline-primary bg-danger text-white w-100"
               routerLink="/admin">Admin</button>
 
