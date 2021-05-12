@@ -9,6 +9,7 @@ import {ModelModule} from '../../model/model.module';
 import {AuthGuard} from './guard/auth.guard';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { ProductEditComponent } from './components/product-edit/product-edit.component';
+import { OrderListComponent } from './components/order-list/order-list.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { ProductEditComponent } from './components/product-edit/product-edit.com
     AuthComponent,
     AdminComponent,
     ProductListComponent,
-    ProductEditComponent
+    ProductEditComponent,
+    OrderListComponent
   ],
   imports: [
     CommonModule,
