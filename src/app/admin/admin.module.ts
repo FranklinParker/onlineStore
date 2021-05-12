@@ -7,12 +7,16 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AdminComponent } from './components/admin/admin.component';
 import {ModelModule} from '../../model/model.module';
 import {AuthGuard} from './guard/auth.guard';
+import { ProductListComponent } from './components/product-list/product-list.component';
+import { ProductEditComponent } from './components/product-edit/product-edit.component';
 
 
 @NgModule({
   declarations: [
     AuthComponent,
-    AdminComponent
+    AdminComponent,
+    ProductListComponent,
+    ProductEditComponent
   ],
   imports: [
     CommonModule,

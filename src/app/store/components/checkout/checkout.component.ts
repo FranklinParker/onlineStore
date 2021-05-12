@@ -24,12 +24,12 @@ export class CheckoutComponent implements OnInit {
     this.submitted = true;
     if (form.valid){
       this.orderRepository.saveOrder(this.order)
-        .subscribe((res) => {
+        .subscribe(() => {
           this.order.clear();
           this.submitted = false;
           this.orderSent = true;
           },
-          err => alert('Error saving order: ' + err.message)
+          (err: { message: string; }) => alert('Error saving order: ' + err.message)
         );
 
     }
