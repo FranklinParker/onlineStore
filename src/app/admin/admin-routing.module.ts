@@ -19,10 +19,6 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       {
-        path: 'products',
-        component: ProductListComponent,
-      },
-      {
         path: 'products/:mode/:id',
         component: ProductEditComponent,
       },
@@ -31,14 +27,26 @@ const routes: Routes = [
         component: ProductEditComponent,
       },
       {
+        path: 'products',
+        component: ProductListComponent,
+      },
+      {
         path: 'orders',
         component: OrderListComponent,
+      },
+      {
+        path: '**',
+        redirectTo: 'products'
       }
     ],
   },
   {
     path: 'auth',
     component: AuthComponent,
+  },
+  {
+    path: '**',
+    redirectTo: 'auth',
   },
 
 ];
