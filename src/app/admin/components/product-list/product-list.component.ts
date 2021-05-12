@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {ProductRepository} from '../../../../model/product.repository';
+import {ProductModel} from '../../../../model/product.model';
 
 @Component({
   selector: 'app-product-list',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductListComponent implements OnInit {
 
-  constructor() { }
+  constructor(private productRepository: ProductRepository) { }
 
   ngOnInit(): void {
+  }
+
+  getProducts(): ProductModel[]{
+    return this.productRepository.getProducts();
+  }
+  deleteProduct(id: number): void {
+    this.productRepository.deleteProduct(id);
   }
 
 }
