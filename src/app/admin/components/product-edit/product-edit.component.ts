@@ -26,6 +26,6 @@ export class ProductEditComponent implements OnInit {
   }
 
   save(form: NgForm): void {
-
+    this.productRepository.saveProduct(this.product);
   }
 }

@@ -29,7 +29,12 @@
            name="price"
            class="form-control mt-1">
   </div>
-  <button type="submit" [class.bg-warning]="product.id" class="btn btn-primary w-75">
-    {{product.id?'Update Product': 'Create Product'}}
-  </button>
+  <div class="text-center m-1">
+    <button type="submit" [class.bg-warning]="product.id" class="btn btn-primary">
+      {{product.id?'Update Product': 'Create Product'}}
+    </button>
+    <button class="btn btn-secondary mx-2" routerLink="/admin/main">Cancel</button>
+  </div>
+
+
 </form>
