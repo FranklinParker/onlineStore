@@ -1,3 +1,22 @@
-<div class="bg-info p-2 text-white">
-  <h3>Order list</h3>
+<div class="form-check">
+  <label class="form-check-label">
+    <input type="checkbox" [(ngModel)]="includeShipped" class="form-check-input"/>
+    Display Shipped Orders
+  </label>
 </div>
+<table class="table table-sm table-striped w-100">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Total Items</th>
+    <th>Total Amount</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let order of getOrders()">
+    <td>{{order.name}}</td>
+    <td>{{order.cart.TotalItems}}</td>
+    <td>{{order.cart.TotalAmount|currency}}</td>
+  </tr>
+  </tbody>
+</table>
