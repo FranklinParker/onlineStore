@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ProductRepository} from '../../../../model/product.repository';
 import {ProductModel} from '../../../../model/product.model';
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-product-edit',
@@ -24,4 +25,7 @@ export class ProductEditComponent implements OnInit {
     }
   }
 
+  save(form: NgForm): void {
+
+  }
 }
